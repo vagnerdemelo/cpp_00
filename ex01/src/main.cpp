@@ -6,7 +6,7 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 19:36:09 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/13 19:56:45 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/13 20:16:19 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int main(void)
 {
 	PhoneBook phonelist;
 	ft_cout_endl("># PhoneBook #");
-	ft_cout_endl("># Digite um alguns dos desses comandos [HELP, SEARCH, ADD, EXIT].");
+	ft_cout_endl("># Type one these commands [HELP, SEARCH, ADD, EXIT].");
 	run_phonebook(phonelist);
 
 	return 0;
