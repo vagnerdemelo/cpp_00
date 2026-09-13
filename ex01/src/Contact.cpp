@@ -6,7 +6,7 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 23:48:10 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/13 17:27:58 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/13 18:33:46 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@ Contact::Contact()
 }
 bool Contact::create_contact()
 {
-	ft_cout("># Type the first name: ");
+	ft_cout_endl("># Type the first name: ");
 	this->firstName = ft_get_line();
 
-	ft_cout("># Type the last name: ");
+	ft_cout_endl("># Type the last name: ");
 	this->lastName = ft_get_line();
 
-	ft_cout("># Type a nickname: ");
+	ft_cout_endl("># Type a nickname: ");
 	this->nickname = ft_get_line();
 
-	ft_cout("># Type a phone number: ");
+	ft_cout_endl("># Type a phone number: ");
 	this->phoneNumber = ft_get_line();
 
-	ft_cout("># Type the darkest secret: ");
+	ft_cout_endl("># Type the darkest secret: ");
 	this->darkestSecret = ft_get_line();
 
 	if (firstName.empty() || lastName.empty() || nickname.empty() || phoneNumber.empty() || darkestSecret.empty())
 	{
 		clear_fields();
-		ft_cout("># One or more fields are blank. The contact can't be saved.");
+		ft_cout_endl("># One or more fields are blank. The contact can't be saved.");
 		return false;
 	}
 
@@ -51,25 +51,25 @@ void Contact::clear_fields()
 }
 std::string Contact::get_first_name() const
 {
-	return firstName;
+	return this->firstName;
 }
 
 std::string Contact::get_last_name() const
 {
-	return lastName;
+	return this->lastName;
 }
 
 std::string Contact::get_nickname() const
 {
-	return nickname;
+	return this->nickname;
 }
 
 std::string Contact::get_phone_number() const
 {
-	return phoneNumber;
+	return this->phoneNumber;
 }
 
 std::string Contact::get_darkest_secret() const
 {
-	return darkestSecret;
+	return this->darkestSecret;
 }

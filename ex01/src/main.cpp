@@ -6,7 +6,7 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 19:36:09 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/13 16:51:50 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/13 17:51:01 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int main(void)
 			run = false;
 		}
 		else
-			ft_cout("># Invalid command. Type [ADD, SEARCH or EXIT]");
+			ft_cout_endl("># Invalid command. Type [ADD, SEARCH or EXIT]");
 	}
 
 	return 0;
