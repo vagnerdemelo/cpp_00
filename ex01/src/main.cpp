@@ -6,30 +6,36 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 19:36:09 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/13 17:51:01 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/13 19:56:45 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "helpers.hpp"
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
-
-int main(void)
+void show_instructions(void)
 {
-	PhoneBook phonelist;
+	ft_cout_endl("SEARCH - Exibe a lista de contatos.");
+	ft_cout_endl("ADD - Adiciona um contato na lista.");
+	ft_cout_endl("EXIT - Encerra o programa");
+}
+bool run_phonebook(PhoneBook phonelist)
+{
 	bool run = true;
 	std::string command;
 
 	while(run)
 	{
-		std::cout << ">";
+		ft_cout(">");
 		std::getline(std::cin, command);
-		if (command == "ADD")
+		if (command.empty())
+			continue;
+		else if (command == "ADD")
 			phonelist.add_contact();
 		else if (command == "SEARCH")
-		{
 			phonelist.search_contact();
-		}
+		else if (command == "HELP")
+			show_instructions();
 		else if (command == "EXIT")
 		{
 			std::cout << "># Bye." << std::endl;
@@ -38,6 +44,15 @@ int main(void)
 		else
 			ft_cout_endl("># Invalid command. Type [ADD, SEARCH or EXIT]");
 	}
+	return run;
+}
+
+int main(void)
+{
+	PhoneBook phonelist;
+	ft_cout_endl("># PhoneBook #");
+	ft_cout_endl("># Digite um alguns dos desses comandos [HELP, SEARCH, ADD, EXIT].");
+	run_phonebook(phonelist);
 
 	return 0;
 }
