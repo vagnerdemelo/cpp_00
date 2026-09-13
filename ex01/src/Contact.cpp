@@ -6,7 +6,7 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 23:48:10 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/09 23:52:41 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/13 16:51:50 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,38 @@ Contact::Contact()
 }
 bool Contact::create_contact()
 {
-	stdout_endl("># Type the first name: ");
+	ft_cout("># Type the first name: ");
 	this->firstName = get_line();
 
-	stdout_endl("># Type the last name: ");
+	ft_cout("># Type the last name: ");
 	this->lastName = get_line();
 
-	stdout_endl("># Type a nickname: ");
+	ft_cout("># Type a nickname: ");
 	this->nickname = get_line();
 
-	stdout_endl("># Type a phone number: ");
+	ft_cout("># Type a phone number: ");
 	this->phoneNumber = get_line();
 
-	stdout_endl("># Type the darkest secret: ");
+	ft_cout("># Type the darkest secret: ");
 	this->darkestSecret = get_line();
 
-	if (!(firstName.empty() || lastName.empty() || nickname.empty() || phoneNumber.empty() || darkestSecret.empty()))
+	if (firstName.empty() || lastName.empty() || nickname.empty() || phoneNumber.empty() || darkestSecret.empty())
 	{
-		stdout_endl("># One or more fields are blank. The contact can't be saved.");
+		clear_fields();
+		ft_cout("># One or more fields are blank. The contact can't be saved.");
 		return false;
 	}
 
-	stdout_endl("# Contact has been saved!");
 	return true;
 }
-
+void Contact::clear_fields()
+{
+	firstName.clear();
+	lastName.clear();
+	nickname.clear();
+	phoneNumber.clear();
+	darkestSecret.clear();
+}
 std::string Contact::get_first_name() const
 {
 	return firstName;

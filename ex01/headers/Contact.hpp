@@ -6,7 +6,7 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 22:34:22 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/09 23:48:43 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/13 15:59:47 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ private:
 	std::string nickname;
 	std::string phoneNumber;
 	std::string darkestSecret;
+
+	void clear_fields();
 public:
 	Contact();
 
