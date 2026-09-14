@@ -6,13 +6,14 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 22:34:22 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/13 17:47:00 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/13 22:14:17 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
+#include <string>
 #include "helpers.hpp"
 
 class Contact

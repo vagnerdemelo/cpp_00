@@ -6,7 +6,7 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 21:37:40 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/13 19:35:54 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/13 22:33:16 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,25 @@ PhoneBook::PhoneBook()
 
 void PhoneBook::add_contact(void)
 {
+	Contact new_contact;
+	if (!new_contact.create_contact()){
+		ft_cout_endl("># The contact can't be saved. Type 'ADD' to try again.");
+		return;
+	}
+
 	if (this->contactsQuantity == 8){
 		ft_cout_endl("># The PhoneList is full! The oldest contact will be replaced by the new one.");
+
 		for(int i = 1; i < 8; i++)
 			this->contacts[i - 1] = this->contacts[i];
 		this->contactsQuantity--;
 		this->index--;
 	}
 
-	if (this->contactsQuantity < 8 && this->contacts[index].create_contact()){
-		std::cout << "# The contact index " << this->index + 1 << "has been saved sucessfuly." << std::endl;
-		this->contactsQuantity++;
-		this->index++;
-	}
-	else{
-		ft_cout_endl("># The contact can't saved. Type 'ADD' to try again.");
-	}
+	std::cout << "# The contact index " << this->index + 1 << " has been saved successfuly." << std::endl;
+	this->contacts[index] = new_contact;
+	this->contactsQuantity++;
+	this->index++;
 }
 
 void PhoneBook::search_contact(void)

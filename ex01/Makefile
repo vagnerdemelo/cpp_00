@@ -6,7 +6,7 @@
 #    By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/08 21:53:35 by vade-mel          #+#    #+#              #
-#    Updated: 2026/09/09 22:54:48 by vade-mel         ###   ########.fr        #
+#    Updated: 2026/09/13 22:06:14 by vade-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,3 @@ fclean: clean
 	@echo "$(NAME) e arquivos objetos removidos!"
 
 re: fclean all
-
-run:
-	@echo "Iniciando $(NAME)"
-	@./$(NAME)
