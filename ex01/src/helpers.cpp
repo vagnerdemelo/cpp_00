@@ -6,7 +6,7 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 22:09:15 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/13 19:12:50 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/13 23:52:14 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void ft_cout(int value)
 	std::cout << value;
 }
 
-std::string ft_get_line(void)
+bool ft_get_line(std::string &input)
 {
-	std::string input;
-	std::getline(std::cin, input);
+    if (!std::getline(std::cin, input))
+        return false;
 
-	return input;
+    return true;
 }
 
 std::string ft_adjust_field(std::string str)

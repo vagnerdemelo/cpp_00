@@ -6,7 +6,7 @@
 #    By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/08 21:53:35 by vade-mel          #+#    #+#              #
-#    Updated: 2026/09/13 22:06:14 by vade-mel         ###   ########.fr        #
+#    Updated: 2026/09/14 01:01:53 by vade-mel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,9 @@ SRCS := $(SRC_FOLDER)main.cpp \
 		$(SRC_FOLDER)Contact.cpp \
 		$(SRC_FOLDER)PhoneBook.cpp
 OBJS = $(patsubst $(SRC_FOLDER)%.cpp,$(OBJ_FOLDER)%.o,$(SRCS))
+DEPS = $(OBJS:.o=.d)
 
-.PHONY: all clean fclean re run
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
@@ -38,7 +39,9 @@ $(OBJ_FOLDER):
 
 $(OBJ_FOLDER)%.o: $(SRC_FOLDER)%.cpp | $(OBJ_FOLDER)
 	@echo "Compilando $<..."
-	@$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CXX) $(CXXFLAGS) $(INCLUDES) -MMD -MP -c $< -o $@
+
+-include $(DEPS)
 
 clean:
 	@echo "Removendo arquivos objeto..."

@@ -6,7 +6,7 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 21:37:40 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/13 22:33:16 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/14 00:55:49 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void PhoneBook::add_contact(void)
 {
 	Contact new_contact;
 	if (!new_contact.create_contact()){
-		ft_cout_endl("># The contact can't be saved. Type 'ADD' to try again.");
+		if(!std::cin.eof())
+			ft_cout_endl("># The contact can't be saved. Type 'ADD' to try again.");
 		return;
 	}
 
@@ -47,17 +48,7 @@ void PhoneBook::search_contact(void)
 		ft_cout_endl("># Please, add a contact before searching. Exiting search mode now.");
 	else{
 		display_headers();
-
-		int input_index;
-		while(!(std::cin >> input_index) || (input_index < 0 || input_index > this->contactsQuantity))
-		{
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			ft_cout_endl("# Invalid Index");
-		}
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		if (input_index > 0)
-			display_one_contact_fields(input_index);
+		validation_input();
 	}
 }
 
@@ -70,7 +61,9 @@ void PhoneBook::display_headers(void)
 		display_contacts_fields(contact);
 	ft_cout_endl("|-------------------------------------------|");
 	ft_cout_endl("");
-	ft_cout_endl("># To search a specific contact, type a number in the range of 1 to 8 or 0 to Exit.");
+	ft_cout("># To search a specific contact, type a number in the range of 1 to ");
+	ft_cout(this->contactsQuantity);
+	ft_cout_endl(".");
 }
 
 void PhoneBook::display_contacts_fields(int contact_index)
@@ -88,6 +81,31 @@ void PhoneBook::display_contacts_fields(int contact_index)
 	std::cout << std::setw(10);
 	ft_cout(ft_adjust_field(this->contacts[contact_index].get_nickname()));
 	ft_cout_endl("|");
+}
+
+void PhoneBook::validation_input(void)
+{
+	while (true)
+	{
+		std::string input;
+		int input_index;
+		char extra;
+
+		ft_cout(">SEARCH_MODE$ ");
+		if (!std::getline(std::cin, input))
+			return;
+
+		std::stringstream stream(input);
+
+		if ((!(stream >> input_index) || (stream >> extra)) || (input_index < 0 || input_index > this->contactsQuantity)){
+			ft_cout_endl("# Invalid Index");
+			continue;
+		}
+
+		if (input_index > 0)
+			display_one_contact_fields(input_index);
+		return;
+	}
 }
 
 void PhoneBook::display_one_contact_fields(int contact_index)

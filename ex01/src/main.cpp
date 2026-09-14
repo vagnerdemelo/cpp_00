@@ -6,7 +6,7 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 19:36:09 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/13 22:54:58 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/14 00:26:30 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void show_instructions(void)
 	ft_cout_endl("EXIT - Encerra o programa");
 }
 */
-bool run_phonebook(PhoneBook phonelist)
+bool run_phonebook(PhoneBook &phonelist)
 {
 	bool run = true;
 	std::string command;
@@ -30,7 +30,11 @@ bool run_phonebook(PhoneBook phonelist)
 	while(run)
 	{
 		ft_cout(">");
-		std::getline(std::cin, command);
+		if (!std::getline(std::cin, command))
+		{
+			ft_cout_endl("");
+			break;
+		}
 		if (command.empty())
 			continue;
 		else if (command == "ADD")
@@ -44,8 +48,8 @@ bool run_phonebook(PhoneBook phonelist)
 			std::cout << "># Bye." << std::endl;
 			run = false;
 		}
-		else
-			ft_cout_endl("># Invalid command. Type [ADD, SEARCH or EXIT]");
+		// else
+		// 	ft_cout_endl("># Invalid command. Type [ADD, SEARCH or EXIT]");
 	}
 	return run;
 }
@@ -55,7 +59,12 @@ int main(void)
 	PhoneBook phonelist;
 	ft_cout_endl("># PhoneBook #");
 	ft_cout_endl("># Type one these commands [SEARCH, ADD, EXIT].");
-	run_phonebook(phonelist);
+	bool run = run_phonebook(phonelist);
 
+	if (run)
+	{
+		ft_cout_endl("># The Ctrl + D keys was pressed");
+		ft_cout_endl("># Bye.");
+	}
 	return 0;
 }

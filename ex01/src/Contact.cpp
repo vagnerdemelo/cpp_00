@@ -6,7 +6,7 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 23:48:10 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/13 18:33:46 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/14 00:50:07 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ Contact::Contact()
 bool Contact::create_contact()
 {
 	ft_cout_endl("># Type the first name: ");
-	this->firstName = ft_get_line();
-
+	if (!ft_get_line(this->firstName))
+		return false;
 	ft_cout_endl("># Type the last name: ");
-	this->lastName = ft_get_line();
-
+	if (!ft_get_line(this->lastName))
+		return false;
 	ft_cout_endl("># Type a nickname: ");
-	this->nickname = ft_get_line();
-
+	if (!ft_get_line(this->nickname))
+		return false;
 	ft_cout_endl("># Type a phone number: ");
-	this->phoneNumber = ft_get_line();
-
+	if (!ft_get_line(this->phoneNumber))
+		return false;
 	ft_cout_endl("># Type the darkest secret: ");
-	this->darkestSecret = ft_get_line();
-
+	if (!ft_get_line(this->darkestSecret))
+		return false;
 	if (firstName.empty() || lastName.empty() || nickname.empty() || phoneNumber.empty() || darkestSecret.empty())
 	{
 		clear_fields();
