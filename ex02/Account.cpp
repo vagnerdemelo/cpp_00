@@ -6,7 +6,7 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 19:45:35 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/23 20:42:39 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/23 21:17:43 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,26 @@ Account::Account(int initial_deposit)
 
 	Account::_nbAccounts++;
 	Account::_totalAmount += initial_deposit;
+}
+
+int Account::getNbAccounts(void)
+{
+	return Account::_nbAccounts;
+}
+
+int Account::getTotalAmount(void)
+{
+	return Account::_totalAmount;
+}
+
+int Account::getNbDeposits(void)
+{
+	return Account::_totalNbDeposits;
+}
+
+int Account::getNbWithdrawals(void)
+{
+	return Account::_totalNbWithdrawals;
 }
 
 Account::~Account()
