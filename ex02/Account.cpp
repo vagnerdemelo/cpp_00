@@ -6,10 +6,12 @@
 /*   By: vade-mel <vade-mel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/23 19:45:35 by vade-mel          #+#    #+#             */
-/*   Updated: 2026/09/23 21:17:43 by vade-mel         ###   ########.fr       */
+/*   Updated: 2026/09/23 23:08:38 by vade-mel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ctime>
+#include <iostream>
 #include "Account.hpp"
 
 int	Account::_nbAccounts = 0;
@@ -46,6 +48,26 @@ int Account::getNbDeposits(void)
 int Account::getNbWithdrawals(void)
 {
 	return Account::_totalNbWithdrawals;
+}
+
+void Account::_displayTimestamp(void)
+{
+	char buffer[30];
+	std::time_t time_now = std::time(NULL);
+	std::tm* local_time = std::localtime(&time_now);
+	std::strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S] ", local_time);
+	std::cout << buffer;
+}
+
+void Account::displayAccountsInfos(void)
+{
+	Account::_displayTimestamp();
+	std::cout
+		<< "accounts:" << Account::getNbAccounts() << ";"
+		<< "total:" << Account::getTotalAmount() << ";"
+		<< "deposits:" << Account::getNbDeposits() << ";"
+		<< "withdrawals:" << Account::getNbWithdrawals()
+		<< std::endl;
 }
 
 Account::~Account()
